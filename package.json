@@ -1,0 +1,31 @@
+{
+  "name": "zeptomatch-explode",
+  "repository": "github:fabiospampinato/zeptomatch-explode",
+  "description": "A little utility for exploding a zeptomatch-flavored glob into its dynamic and static parts.",
+  "version": "1.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "clean": "tsex clean",
+    "compile": "tsex compile",
+    "compile:watch": "tsex compile --watch",
+    "test": "tsex test",
+    "test:watch": "tsex test --watch",
+    "prepublishOnly": "tsex prepare"
+  },
+  "keywords": [
+    "zeptomatch",
+    "explode",
+    "glob",
+    "start",
+    "end"
+  ],
+  "devDependencies": {
+    "fava": "^0.3.2",
+    "tsex": "^3.2.1",
+    "typescript": "^5.4.3"
+  }
+}
