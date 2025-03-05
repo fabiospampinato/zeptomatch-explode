@@ -40,6 +40,8 @@ describe ( 'Zeptomatch Explode', it => {
     t.deepEqual ( explodeStart ( '{foo,bar}/{baz,qux}/*' ), { statics: ['foo/baz', 'foo/qux', 'bar/baz', 'bar/qux'], dynamic: '*' } );
     t.deepEqual ( explodeStart ( 'pre/{foo,bar}/post/*' ), { statics: ['pre/foo/post', 'pre/bar/post'], dynamic: '*' } );
 
+    t.deepEqual ( explodeStart ( '*/foo' ), { statics: [], dynamic: '*/foo' } );
+
     t.deepEqual ( explodeStart ( '**/foo/*' ), { statics: [], dynamic: '**/foo/*' } );
     t.deepEqual ( explodeStart ( '**/foo/bar/*' ), { statics: [], dynamic: '**/foo/bar/*' } );
     t.deepEqual ( explodeStart ( '**/{foo}/*' ), { statics: [], dynamic: '**/{foo}/*' } );
@@ -83,6 +85,8 @@ describe ( 'Zeptomatch Explode', it => {
     t.deepEqual ( explodeEnd ( '*pre{foo,bar}post' ), { flexibleStart: true, flexibleEnd: false, statics: ['prefoopost', 'prebarpost'], dynamic: '*' } );
     t.deepEqual ( explodeEnd ( 'pre{foo,bar}post*' ), { flexibleStart: false, flexibleEnd: true, statics: ['prefoopost', 'prebarpost'], dynamic: '*' } );
     t.deepEqual ( explodeEnd ( '*pre{foo,bar}post*' ), { flexibleStart: true, flexibleEnd: true, statics: ['prefoopost', 'prebarpost'], dynamic: '*' } );
+
+    t.deepEqual ( explodeEnd ( '*/foo' ), { flexibleStart: false, flexibleEnd: false, statics: ['foo'], dynamic: '*/*' } );
 
     t.deepEqual ( explodeEnd ( '**/foo' ), { flexibleStart: false, flexibleEnd: false, statics: ['foo'], dynamic: '**/*' } );
     t.deepEqual ( explodeEnd ( '**/*foo' ), { flexibleStart: true, flexibleEnd: false, statics: ['foo'], dynamic: '**/*' } );
