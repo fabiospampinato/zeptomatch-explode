@@ -7,7 +7,7 @@ The idea is to extract the static parts of a glob, potentially from both ends, f
 ## Install
 
 ```sh
-npm install --save zeptomatch-explode
+npm install zeptomatch-explode
 ```
 
 ## Usage
